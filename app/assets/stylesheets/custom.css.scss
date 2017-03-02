@@ -18,7 +18,7 @@ $navbar-default-bg: #073b15;
 }
 
 .jumbotron {
-  background: url(cover_image.jpg) no-repeat center center;
+  background: asset-url('cover_image.jpg') no-repeat center center;
   background-size: cover;
   
   h1,
