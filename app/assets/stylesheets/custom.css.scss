@@ -20,11 +20,16 @@ $navbar-default-bg: #073b15;
 .jumbotron {
   background: asset-url('cover_image.jpg') no-repeat center center;
   background-size: cover;
+  min-height: 300px;
   
   h1,
   h2 {
     color: white;
     text-shadow: 1px 1px 6px rgba(black, 0.8);
+  }
+  
+  .btn {
+    margin-top: 10px;
   }
 }
 
