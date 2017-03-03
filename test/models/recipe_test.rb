@@ -1,15 +1,21 @@
 require 'test_helper'
 
 class RecipeTest < ActiveSupport::TestCase
-
+  
   setup do
-    @recipe = Recipe.new(name: "vegetumtum", description: "great vegetarian recipe") 
+    @chef = Chef.create!(chefname: "Eric", email: "eric@chef.com")
+    @recipe = Recipe.new(name: "vegetumtum", description: "great vegetarian recipe", chef_id: @chef.id) 
   end
   
   test "recipe should be valid" do
     assert @recipe.valid?
   end
-
+  
+  test "recipe without chef id should be invalid" do
+    @recipe.chef_id = nil
+    assert_not @recipe.valid?
+  end
+  
   test "name should be present" do
     @recipe.name = ""
     assert_not @recipe.valid?
