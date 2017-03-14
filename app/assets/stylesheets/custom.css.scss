@@ -21,6 +21,7 @@ $navbar-default-bg: #073b15;
   background: asset-url('cover_image.jpg') no-repeat center center;
   background-size: cover;
   min-height: 300px;
+  text-align: center;
   
   h1,
   h2 {
@@ -37,4 +38,14 @@ footer {
   background: #eee;
   padding: 50px 20px;
   margin-top: 50px;
+}
+
+.well {
+  a {
+    color: #073b15;
+  }
+} // well
+
+.chef_info {
+  margin-top: 10px;
 }
