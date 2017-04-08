@@ -16,5 +16,6 @@ class Chef < ApplicationRecord
   has_secure_password
   
   validates :password, presence: true,
-                       length: { minimum: 5 }
+                       length: { minimum: 5 },
+                       allow_nil: true # won't allow null inputs on signup, but will allow in edit form, etc.
 end
