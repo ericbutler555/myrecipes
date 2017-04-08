@@ -2,6 +2,7 @@ class Chef < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
   before_save { self.email = email.downcase }
+  before_save { self.chefname = chefname.capitalize }
   
   validates :chefname, presence: true,
                        length: { maximum: 30 }
