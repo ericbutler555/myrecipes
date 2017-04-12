@@ -11,6 +11,7 @@
         <li><%= link_to gravatar_for(chef), chef_path(chef) %></li>
         <li class="chef-title"><%= link_to chef.chefname, chef_path(chef) %></li>
         <li class="small"><%= pluralize(chef.recipes.count, "recipe") if chef.recipes %></li>
+        <li><%= link_to "Delete this chef", chef_path(chef), method: :delete, data: { confirm: "Are you sure you want to delete this chef and all associated recipes?" } %></li>
       </div>
     </div>
   </ul>

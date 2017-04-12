@@ -3,7 +3,12 @@ require 'test_helper'
 class ChefTest < ActiveSupport::TestCase
   
   setup do
-    @chef = Chef.new(chefname: "Eric", email: "eric@chef.com", password: "password", password_confirmation: "password")
+    @chef = Chef.new(
+      chefname: "Eric", 
+      email: "eric@chef.com", 
+      password: "password", 
+      password_confirmation: "password"
+    )
   end
   
   test "chef should be valid" do
@@ -72,5 +77,13 @@ class ChefTest < ActiveSupport::TestCase
   test "password should be at least 5 characters" do
     @chef.password = @chef.password_confirmation = "a" * 4
     assert_not @chef.valid?
+  end
+  
+  test "associated recipes should be destroyed" do
+    @chef.save
+    @chef.recipes.create!(name: "Testing destroy", description: "Testing destroy function")
+    assert_difference 'Recipe.count', -1 do
+      @chef.destroy
+    end
   end
 end
