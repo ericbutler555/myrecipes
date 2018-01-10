@@ -9,5 +9,7 @@ class Recipe < ApplicationRecord
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
 
-  default_scope -> { order(updated_at: :desc) }
+  has_many :comments, dependent: :destroy
+
+  default_scope -> { order(updated_at: :desc) } # always make the most recent recipe the first listed (on top)
 end
