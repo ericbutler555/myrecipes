@@ -7,6 +7,9 @@
     <%= simple_format(@recipe.description) %>
   </div>
   <hr>
+<% if @recipe.ingredients.any? %>
+  <p>Ingredients: <%= render @recipe.ingredients %></p>
+<% end %>
   <div class="pull-right">
     <p class="text-center">
       <em>Created by:</em>

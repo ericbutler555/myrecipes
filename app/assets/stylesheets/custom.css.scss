@@ -10,7 +10,7 @@ $navbar-default-bg: #073b15;
   text-transform: uppercase;
   letter-spacing: -1px;
   font-weight: bold;
-  
+
   &:hover {
     color: #fff;
     text-decoration: none;
@@ -22,13 +22,13 @@ $navbar-default-bg: #073b15;
   background-size: cover;
   min-height: 300px;
   text-align: center;
-  
+
   h1,
   h2 {
     color: white;
     text-shadow: 1px 1px 6px rgba(black, 0.8);
   }
-  
+
   .btn {
     margin-top: 10px;
   }
@@ -52,7 +52,7 @@ footer {
 
 .recipe-actions {
   padding-top: 5px;
-  
+
   a {
     color: #fff;
   }
@@ -67,4 +67,8 @@ footer {
   color: #073b15;
   font-weight: bold;
   font-size: 1.25em;
+}
+
+.input_checkbox input {
+  width: auto !important;
 }

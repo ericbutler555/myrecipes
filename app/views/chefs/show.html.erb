@@ -5,14 +5,18 @@
   </div>
 </div>
 
-<h4 class="text-center"><%= @chef.chefname %>'s recipes</h4>
+<% if @chef.recipes.count > 0 %>
+  <h4 class="text-center"><%= @chef.chefname %>'s recipes</h4>
 
-<div class="text-center">
-  <%= will_paginate @chef_recipes %>
-</div>
+  <div class="text-center">
+    <%= will_paginate @chef_recipes %>
+  </div>
 
-<%= render 'recipes/recipe', obj: @chef_recipes %>
+  <%= render 'recipes/recipe', obj: @chef_recipes %>
 
-<div class="text-center">
-  <%= will_paginate @chef_recipes %>
-</div>
+  <div class="text-center">
+    <%= will_paginate @chef_recipes %>
+  </div>
+<% else %>
+  <h4 class="text-center">No recipes yet!</h4>
+<% end %>
