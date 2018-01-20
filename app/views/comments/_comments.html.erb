@@ -1,0 +1,12 @@
+<%# Note: the "comments" variable comes from the object name passed in from views/recipes/show.html.erb %>
+<div class="text-center">
+  <%= will_paginate comments %>
+</div>
+
+<% comments.each do |comment| %>
+  <%= render(partial: 'comments/comment', object: comment) %>
+<% end %>
+
+<div class="text-center">
+  <%= will_paginate comments %>
+</div>

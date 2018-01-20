@@ -11,7 +11,10 @@
       <% if recipe.ingredients.any? %>
         <p>Ingredients: <%= render recipe.ingredients %></p>
       <% end %>
-      <p class="small text-muted"><%= time_ago_in_words(recipe.created_at) %> ago by <%= recipe.chef.chefname.capitalize %></p>
+      <p class="small text-muted">
+        <%= time_ago_in_words(recipe.created_at) %> ago by <%= recipe.chef.chefname.capitalize %>
+        | <%= pluralize(recipe.comments.count, 'Comment') %>
+      </p>
       <% if logged_in? && (current_chef == recipe.chef || current_chef.admin?) %>
         <div class="recipe-actions">
           <%= link_to "Edit this recipe", edit_recipe_path(recipe), class: "btn btn-xs btn-warning" %>
