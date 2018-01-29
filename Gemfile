@@ -58,7 +58,7 @@ group :production do
   # Use Postgres as the database for Active Record
   gem 'pg', '~> 0.21.0'
   # Add Redis for websockets/ActionCable:
-  gem 'redis', '~> 4.0', '>= 4.0.1'
+  gem 'redis', '~> 3.3', '>= 3.3.5'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
