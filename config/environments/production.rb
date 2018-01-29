@@ -83,4 +83,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # CUSTOM: define where you set up your websocket path in config/application.rb:
+  config.web_socket_server_url = "wss://eb555-myrecipes.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['http://eb555-myrecipes.herokuapp.com', 'https://eb555-myrecipes.herokuapp.com']
 end
