@@ -7,8 +7,10 @@ class CommentsController < ApplicationController
     @comment = @recipe.comments.build(comment_params)
     @comment.chef = current_chef
     if @comment.save
-      flash[:success] = "Comment has been saved"
-      redirect_to recipe_path(@recipe)
+      ActionCable.server.broadcast "comments", render(partial: 'comments/comment', object: @comment)
+      # removing these when adding the actioncable for real-time comments:
+      # flash[:success] = "Comment has been saved"
+      # redirect_to recipe_path(@recipe)
     else
       flash[:danger] = "Comment was not saved"
       redirect_to :back

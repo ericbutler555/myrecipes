@@ -6,11 +6,16 @@ Rails.application.routes.draw do
   get 'pages/home', to: 'pages#home'
 
   resources :recipes do
-    resources :comments, only: [:create] # creates a route to receive new comment submissions for a given recipe.
+    resources :comments, only: [:create]
+    # creates a route to receive new comment submissions for a given recipe.
+    member do
+      post 'like'
+    end
   end
+  # could also write out:
   # get 'recipes', to: 'recipes#index'
-  # get 'recipes/new', to: 'recipes#new', as: 'new_recipe'
-  # get 'recipes/:id', to: 'recipes#show', as: 'recipe'
+  # get 'recipes/new', to: 'recipes#new', as: 'new_recipe' ## target as new_recipe_path
+  # get 'recipes/:id', to: 'recipes#show', as: 'recipe' ## target as recipe_path
   # post 'recipes', to: 'recipes#create'
 
   resources :chefs, except: [:new]
@@ -22,5 +27,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+
+  mount ActionCable.server => '/cable'
 
 end

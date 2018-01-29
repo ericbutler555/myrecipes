@@ -29,6 +29,17 @@
     <% end %>
     <%= link_to "Return to recipes listing", recipes_path, class: "btn btn-xs btn-primary" %>
   </div>
+  <div class="row liking">
+    <div class="row col-md-8 col-md-offset-2">
+      <%= link_to like_recipe_path(@recipe, like: true), method: :post do %>
+        <i class="glyphicon glyphicon-thumbs-up"></i>
+      <% end %> <%= pluralize(@recipe.like_total, "like") %>
+      ||
+      <%= link_to like_recipe_path(@recipe, like: false), method: :post do %>
+        <i class="glyphicon glyphicon-thumbs-down"></i>
+      <% end %> <%= pluralize(@recipe.dislike_total, "dislike") %>
+    </div>
+  </div>
 </div>
 
 <% if logged_in? %>
@@ -37,7 +48,7 @@
     <div class="col-xs-12">
       <h3 class="page-header">Comments:</h3>
 
-  <%= form_for [@recipe, @comment], html: {class: 'form-horizontal', role: 'form'} do |f| %>
+  <%= form_for [@recipe, @comment], remote: true, html: {class: 'form-horizontal', role: 'form'} do |f| %>
 
       <div class="form-group">
         <div class="control-label col-md-2">
