@@ -22,6 +22,10 @@ Rails.application.routes.draw do
 
   resources :ingredients, except: [:destroy]
 
+  get 'chat', to: 'chatrooms#show'
+
+  resources :messages, only: [:create]
+
   get 'signup', to: 'chefs#new'
 
   get 'login', to: 'sessions#new'

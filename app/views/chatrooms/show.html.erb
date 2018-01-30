@@ -1,0 +1,18 @@
+<%= render 'shared/page_title', title: "ChefChat" %>
+
+<div class="row chat-container">
+  <div class="col-md-8 center-block">
+    <div class="messages" id="messages">
+      <%= render @messages %>
+      <%# ^ Rails automatically looks for views/messages/_message.html.erb when you write this this way! %>
+    </div>
+    <hr>
+    <div class="message-container">
+      <%= form_for @message, remote: true, html: { class: "form-horizontal", role: "form" } do |f| %>
+        <%= f.text_area :content, data: { behavior: "room_speaker" }, class: "form-control", placeholder: "Say something!" %>
+        <%# ^ the data thing just adds a data-behavior="room_speaker" attribute %>
+        <%= f.submit "Send", data: { send: "message" }, class: "btn btn-primary" %>
+      <% end # form %>
+    </div>
+  </div>
+</div>

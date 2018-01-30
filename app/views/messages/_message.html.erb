@@ -1,0 +1,9 @@
+<%# "message" variable works automatically due to @messages in /views/chatrooms/show.html.erb %>
+<div class="message">
+  <p class="clearfix">
+    <div style="float:left;margin-right:10px;"><%= gravatar_for(message.chef, size: 50) %></div>
+    <small><em>Created <%= time_ago_in_words(message.created_at) %> ago</em></small><br>
+    <strong><%= message.chef.chefname.capitalize %></strong>
+    <span class="content"><%= message.content %></span>
+  </p>
+</div>

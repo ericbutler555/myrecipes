@@ -1,4 +1,4 @@
-App.comments = App.cable.subscriptions.create "CommentsChannel",
+App.chatroom = App.cable.subscriptions.create "ChatroomChannel",
   connected: ->
     # Called when the subscription is ready for use on the server
 
@@ -7,4 +7,6 @@ App.comments = App.cable.subscriptions.create "CommentsChannel",
 
   received: (data) ->
     # Called when there's incoming data on the websocket for this channel
-    $('#messages .comment-fix:first').prepend(data)
+    $('#messages').append(data);
+    $('#message_content').val('');
+    scrollToBottom();

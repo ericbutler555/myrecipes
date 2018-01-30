@@ -15,3 +15,31 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+function scrollToBottom() {
+  if ( $('#messages').length > 0 ) {
+    $('#messages').scrollTop( $('#messages')[0].scrollHeight );
+  }
+}
+
+function submitMessage(e) {
+  e.preventDefault();
+  $('#new_message').submit();
+}
+
+$(document).on('turbolinks:load', function(){
+  $('#new_message').on('ajax:complete', function(e, data, status){
+    $('#message_content').val('');
+  });
+  scrollToBottom();
+});
+
+$(document).on('keypress', '[data-behavior="room_speaker"]', function(e){
+  if (e.keyCode === 13) {
+    submitMessage(e);
+  }
+});
+
+$(document).on('click', '[data-send="message"]', function(e){
+  submitMessage(e);
+});
